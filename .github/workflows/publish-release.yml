@@ -27,20 +27,34 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: iso
 
-      - name: Publicar/actualizar el Release
+      - name: Partir la ISO (límite de 2 GB por archivo en Releases) y publicar
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd iso
+          ISO=$(ls *.iso)
+          echo "ISO original: $ISO"
+          # Partir en trozos de 1900 MB (< 2 GB cada uno)
+          split -b 1900M -d -a 1 "$ISO" "${ISO}.part"
+          rm -f "$ISO"     # no subir el archivo entero (>2 GB)
           ls -lh
           TAG="v1.0-phoenix"
-          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release upload "$TAG" *.iso *.sha256 --clobber --repo "$GITHUB_REPOSITORY"
-          else
-            gh release create "$TAG" *.iso *.sha256 \
-              --repo "$GITHUB_REPOSITORY" \
-              --title "Solux OS 1.0 \"Phoenix\"" \
-              --notes "ISO oficial de Solux OS 1.0 (edición lite). Descarga directa por CDN — rápida y reanudable."
-          fi
-          echo "URL de descarga:"
-          echo "https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/$(ls *.iso)"
+          NOTES="ISO oficial de Solux OS 1.0 \"Phoenix\" (edición lite, 2.6 GB).
+
+GitHub limita cada archivo de Release a 2 GB, así que va en 2 partes. Descárgalas las dos y únelas:
+
+Windows (CMD):
+  copy /b \"${ISO}.part0\" + \"${ISO}.part1\" \"${ISO}\"
+
+Linux / macOS:
+  cat ${ISO}.part* > ${ISO}
+
+Verificar integridad:
+  sha256sum -c ${ISO}.sha256"
+          # Recrear el release limpio
+          gh release delete "$TAG" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag 2>/dev/null || true
+          gh release create "$TAG" ${ISO}.part* ${ISO}.sha256 \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Solux OS 1.0 \"Phoenix\"" \
+            --notes "$NOTES"
+          echo "Publicado en: https://github.com/$GITHUB_REPOSITORY/releases/tag/$TAG"
