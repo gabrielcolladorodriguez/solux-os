@@ -1,0 +1,46 @@
+name: Publicar ISO como Release
+
+# Coge el artefacto solux-os-iso de un run de build y lo publica como
+# Release (descarga por CDN, rápida y reanudable). No recompila.
+# © 2026 Pollocrudo Company
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run ID del build que contiene el artefacto solux-os-iso"
+        required: true
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar la ISO del run de build
+        uses: actions/download-artifact@v4
+        with:
+          name: solux-os-iso
+          run-id: ${{ github.event.inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: iso
+
+      - name: Publicar/actualizar el Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd iso
+          ls -lh
+          TAG="v1.0-phoenix"
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$TAG" *.iso *.sha256 --clobber --repo "$GITHUB_REPOSITORY"
+          else
+            gh release create "$TAG" *.iso *.sha256 \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "Solux OS 1.0 \"Phoenix\"" \
+              --notes "ISO oficial de Solux OS 1.0 (edición lite). Descarga directa por CDN — rápida y reanudable."
+          fi
+          echo "URL de descarga:"
+          echo "https://github.com/$GITHUB_REPOSITORY/releases/download/$TAG/$(ls *.iso)"
