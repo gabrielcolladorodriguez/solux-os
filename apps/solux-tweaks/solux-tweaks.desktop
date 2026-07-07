@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Solux Tweaks
+Name[es]=Ajustes Solux
+GenericName=System Tweaks
+GenericName[es]=Retoques del sistema
+Comment=Balance comfort and security, apply quick tweaks
+Comment[es]=Equilibra comodidad y seguridad y aplica retoques rápidos
+Exec=solux-tweaks
+Icon=preferences-system
+Terminal=false
+Categories=Settings;System;GTK;
+Keywords=tweaks;settings;mode;daily;security;ajustes;
+StartupNotify=true

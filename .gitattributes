@@ -1,0 +1,31 @@
+# Solux OS — Normalización de fin de línea
+# El proyecto se compila en Linux: todo el texto va en LF.
+# Los scripts de shell con CRLF romperían el build, así que se fuerzan a LF.
+
+* text=auto eol=lf
+
+# Scripts y ficheros que se ejecutan/leen en Linux — SIEMPRE LF
+*.sh        text eol=lf
+*.chroot    text eol=lf
+*.hook      text eol=lf
+*.py        text eol=lf
+*.conf      text eol=lf
+*.rc        text eol=lf
+*.list      text eol=lf
+*.desktop   text eol=lf
+*.theme     text eol=lf
+*.dockitem  text eol=lf
+*.script    text eol=lf
+*.plymouth  text eol=lf
+zshrc       text eol=lf
+grub-default text eol=lf
+
+# PowerShell se usa en Windows — puede ir en CRLF
+*.ps1       text eol=crlf
+
+# Binarios (no tocar)
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gz    binary
+*.iso   binary

@@ -1,0 +1,58 @@
+# Solux OS — Tema de GRUB
+# © 2026 Pollocrudo Company
+
+title-text: ""
+desktop-image: "background.png"
+desktop-color: "#0D0D1A"
+terminal-box: "terminal_box_*.png"
+terminal-font: "JetBrains Mono Regular 16"
+
+# Logo / cabecera
++ image {
+    top = 12%
+    left = 50%-128
+    width = 256
+    height = 256
+    file = "logo.png"
+}
+
++ label {
+    top = 62%
+    left = 0
+    width = 100%
+    align = "center"
+    color = "#F97316"
+    font = "Inter Bold 20"
+    text = "Solux OS 1.0 — Phoenix"
+}
+
+# Menú de arranque
++ boot_menu {
+    top = 70%
+    left = 25%
+    width = 50%
+    height = 22%
+    item_font = "Inter Regular 16"
+    item_color = "#94A3B8"
+    selected_item_color = "#0D0D1A"
+    selected_item_pixmap_style = "select_*.png"
+    item_height = 36
+    item_padding = 8
+    item_spacing = 6
+    icon_width = 0
+    icon_height = 0
+}
+
+# Barra de progreso de cuenta atrás
++ progress_bar {
+    id = "__timeout__"
+    top = 94%
+    left = 25%
+    width = 50%
+    height = 14
+    fg_color = "#F97316"
+    bg_color = "#1E1E38"
+    border_color = "#2A2A4A"
+    text_color = "#F1F5F9"
+    font = "Inter Regular 12"
+}

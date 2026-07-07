@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Solux Store
+Name[es]=Tienda Solux
+GenericName=Software Store
+GenericName[es]=Tienda de aplicaciones
+Comment=Instala miles de apps open source y el arsenal de Kali
+Comment[es]=Instala miles de apps de código abierto y el arsenal de Kali
+Exec=solux-store
+Icon=solux-store
+Terminal=false
+Categories=System;PackageManager;GTK;
+Keywords=store;apps;software;install;kali;security;
+StartupNotify=true

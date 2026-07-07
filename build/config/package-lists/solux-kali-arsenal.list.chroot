@@ -1,0 +1,40 @@
+# Solux OS — Arsenal de Kali Linux (requiere el repo de Kali, ver hooks/01-repos.sh)
+# © 2026 Pollocrudo Company
+#
+# Metapaquetes de Kali que agrupan cientos de herramientas. Instalar todos hace la ISO
+# muy grande (~15 GB). Por defecto se incluye kali-linux-headless + categorías clave;
+# el resto se ofrece desde la Solux Store bajo demanda.
+
+# --- Metapaquete principal (sin GUI, ~600 herramientas de consola) ---
+kali-linux-headless
+
+# --- Categorías por disciplina ---
+kali-tools-information-gathering
+kali-tools-vulnerability
+kali-tools-web
+kali-tools-passwords
+kali-tools-wireless
+kali-tools-exploitation
+kali-tools-sniffing-spoofing
+kali-tools-post-exploitation
+kali-tools-forensics
+kali-tools-reverse-engineering
+
+# --- Herramientas destacadas (por si algún metapaquete cambia) ---
+metasploit-framework
+wireshark
+aircrack-ng
+john
+hashcat
+hydra
+sqlmap
+nikto
+gobuster
+ffuf
+burpsuite
+zaproxy
+ghidra
+radare2
+autopsy
+binwalk
+bettercap

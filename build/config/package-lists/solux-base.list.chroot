@@ -1,0 +1,74 @@
+# Solux OS — Paquetes base del sistema y escritorio XFCE
+# © 2026 Pollocrudo Company
+
+# --- Núcleo del sistema ---
+linux-image-amd64
+firmware-linux
+firmware-linux-nonfree
+grub-efi-amd64
+grub-pc-bin
+os-prober
+sudo
+systemd-timesyncd
+network-manager
+network-manager-gnome
+ca-certificates
+locales
+console-setup
+
+# --- Escritorio XFCE ---
+xorg
+xfce4
+xfce4-goodies
+xfce4-terminal
+xfce4-power-manager
+xfce4-notifyd
+xfce4-screenshooter
+xfce4-whiskermenu-plugin
+lightdm
+lightdm-gtk-greeter
+thunar
+thunar-archive-plugin
+file-roller
+mousepad
+ristretto
+xfce4-taskmanager
+plank
+menulibre
+mugshot
+
+# --- Apariencia ---
+papirus-icon-theme
+fonts-inter
+fonts-jetbrains-mono
+fonts-noto
+fonts-noto-color-emoji
+plymouth
+plymouth-themes
+conky-all
+librsvg2-bin
+
+# --- Utilidades esenciales ---
+firefox-esr
+vlc
+libreoffice
+gparted
+htop
+neofetch
+curl
+wget
+git
+gnupg
+zsh
+build-essential
+python3
+python3-gi
+gir1.2-gtk-3.0
+policykit-1
+flatpak
+synaptic
+
+# --- Instalador ---
+calamares
+calamares-settings-debian
+qml-module-qtquick2

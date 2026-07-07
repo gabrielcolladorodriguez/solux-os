@@ -1,0 +1,37 @@
+#
+# Solux OS — Tema del dock Plank
+# © 2026 Pollocrudo Company
+# Barra flotante oscura con borde naranja e indicadores de marca.
+#
+[PlankTheme]
+TopRoundness=12
+BottomRoundness=0
+LineWidth=1
+OuterStrokeColor=249;115;22;180
+FillStartColor=13;13;26;220
+FillEndColor=21;21;42;235
+InnerStrokeColor=42;42;74;255
+
+[PlankDockTheme]
+HorizPadding=8
+TopPadding=4
+BottomPadding=2
+ItemPadding=4
+IndicatorSize=6
+IconShadowSize=2
+UrgentBounceHeight=1.6666666666666667
+LaunchBounceHeight=0.625
+FadeOpacity=1
+ClickTime=300
+UrgentBounceTime=600
+LaunchBounceTime=600
+ActiveTime=300
+SlideTime=300
+FadeTime=250
+HideTime=250
+GlowSize=10
+GlowTime=10000
+GlowPulseTime=2000
+UrgentHueShift=150
+ItemMoveTime=450
+CascadeHide=true

@@ -1,0 +1,101 @@
+#!/bin/sh
+# Solux OS — Aplica branding, temas, wallpapers, apps propias y config del escritorio
+# © 2026 Pollocrudo Company
+set -e
+
+echo "[Solux][02-branding] Aplicando identidad de Solux OS..."
+
+OS_NAME="Solux OS"
+OS_VERSION="1.0"
+OS_CODENAME="Phoenix"
+
+# --- /etc/os-release ---
+cat > /etc/os-release <<EOF
+PRETTY_NAME="${OS_NAME} ${OS_VERSION} (${OS_CODENAME})"
+NAME="${OS_NAME}"
+VERSION_ID="${OS_VERSION}"
+VERSION="${OS_VERSION} (${OS_CODENAME})"
+VERSION_CODENAME=${OS_CODENAME}
+ID=solux
+ID_LIKE=debian
+HOME_URL="https://pollocrudo.example/solux-os"
+SUPPORT_URL="https://pollocrudo.example/solux-os/support"
+BUG_REPORT_URL="https://pollocrudo.example/solux-os/issues"
+LOGO=solux-logo
+EOF
+
+# --- Mensajes de sistema ---
+echo "${OS_NAME} ${OS_VERSION} \"${OS_CODENAME}\" \\n \\l" > /etc/issue
+echo "${OS_NAME} ${OS_VERSION} \"${OS_CODENAME}\"" > /etc/issue.net
+cat > /etc/motd <<'EOF'
+
+   ____        _              ___  ____
+  / ___|  ___ | |_   ___  __ / _ \/ ___|
+  \___ \ / _ \| | | | \ \/ /| | | \___ \
+   ___) | (_) | | |_| |>  < | |_| |___) |
+  |____/ \___/|_|\__,_/_/\_\ \___/|____/
+
+  Solux OS 1.0 "Phoenix" — Pollocrudo Company (c) 2026
+  Seguridad que renace contigo.
+
+EOF
+
+# --- Rasterizar logos y wallpapers (SVG -> PNG) ---
+SRC=/usr/share/solux/_src
+if [ -d "$SRC/wallpapers" ] && command -v rsvg-convert >/dev/null 2>&1; then
+    install -d /usr/share/backgrounds/solux
+    for f in "$SRC"/wallpapers/*.svg; do
+        [ -f "$f" ] || continue
+        base=$(basename "$f" .svg)
+        rsvg-convert -w 1920 -h 1080 "$f" -o "/usr/share/backgrounds/solux/${base}.png" || true
+    done
+fi
+install -d /usr/share/pixmaps/solux /usr/share/icons/hicolor/256x256/apps
+# Preferir el logo real (PNG) del usuario si existe; si no, rasterizar el SVG.
+if [ -f /usr/share/pixmaps/solux/solux-logo-full.png ]; then
+    cp -f /usr/share/pixmaps/solux/solux-logo-full.png /usr/share/pixmaps/solux/solux-logo.png || true
+elif [ -d "$SRC/logos" ] && command -v rsvg-convert >/dev/null 2>&1; then
+    rsvg-convert -w 256 -h 256 "$SRC/logos/solux-logo-mark.svg" -o /usr/share/pixmaps/solux/solux-logo.png || true
+fi
+cp -f /usr/share/pixmaps/solux/solux-logo.png /usr/share/icons/hicolor/256x256/apps/solux-logo.png 2>/dev/null || true
+
+# Elegir el fondo por defecto: preferir el wallpaper fotográfico real 01 si está.
+DEFAULT_BG=/usr/share/backgrounds/solux/01-phoenix-dawn.png
+if [ -f /usr/share/backgrounds/solux/solux-wallpaper-01.jpg ]; then
+    DEFAULT_BG=/usr/share/backgrounds/solux/solux-wallpaper-01.jpg
+fi
+ln -sf "$DEFAULT_BG" /usr/share/backgrounds/solux/default.jpg 2>/dev/null || true
+
+# --- Lanzadores de las apps Solux en /usr/bin ---
+make_launcher() {
+    # $1 = nombre binario, $2 = ruta al .py
+    cat > "/usr/bin/$1" <<EOF
+#!/bin/sh
+exec python3 "$2" "\$@"
+EOF
+    chmod 0755 "/usr/bin/$1"
+}
+make_launcher solux-store            /usr/share/solux/store/solux_store.py
+make_launcher solux-security-center  /usr/share/solux/security-center/solux_security_center.py
+make_launcher solux-welcome          /usr/share/solux/welcome/solux_welcome.py
+make_launcher solux-tweaks           /usr/share/solux/tweaks/solux_tweaks.py
+
+# --- Registrar Flathub para Flatpak ---
+if command -v flatpak >/dev/null 2>&1; then
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
+fi
+
+# --- Login LightDM: el archivo lo aporta build.sh en /etc/lightdm/.
+# Solo garantizamos que el greeter GTK sea el activo.
+mkdir -p /etc/lightdm/lightdm.conf.d
+cat > /etc/lightdm/lightdm.conf.d/50-solux.conf <<'EOF'
+[Seat:*]
+greeter-session=lightdm-gtk-greeter
+EOF
+
+# --- Plymouth por defecto ---
+if [ -d /usr/share/plymouth/themes/solux ]; then
+    plymouth-set-default-theme solux || true
+fi
+
+echo "[Solux][02-branding] Branding aplicado."

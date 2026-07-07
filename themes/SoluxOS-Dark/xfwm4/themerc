@@ -1,0 +1,22 @@
+# Solux OS — Decoración de ventanas (xfwm4)
+# © 2026 Pollocrudo Company
+
+active_text_color=#F1F5F9
+inactive_text_color=#94A3B8
+
+title_vertical_offset_active=2
+title_vertical_offset_inactive=2
+
+button_offset=6
+button_spacing=4
+full_width_title=true
+title_alignment=center
+title_shadow_active=false
+title_shadow_inactive=false
+
+# Bordes finos con acento naranja en activo
+active_border_color=#F97316
+inactive_border_color=#2A2A4A
+
+border_undecorated=1
+maximized_offset=0

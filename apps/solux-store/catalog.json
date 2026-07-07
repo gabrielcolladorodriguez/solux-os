@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "name": "Solux Store Catalog",
+    "version": "1.0.0",
+    "updated": "2026-07-06",
+    "note": "Cada entrada usa un backend: 'apt' (paquete Debian/Kali), 'flatpak' (Flathub) o 'meta' (metapaquete que agrupa muchos). El campo 'pkg' es el identificador real que se instala."
+  },
+  "categories": [
+    {
+      "id": "security-arsenal",
+      "name": "Arsenal de Seguridad (Kali)",
+      "icon": "security-high",
+      "description": "El conjunto completo de herramientas de Kali Linux, clasificadas por disciplina.",
+      "subcategories": [
+        {
+          "id": "info-gathering",
+          "name": "Recolección de información",
+          "apps": [
+            {"name": "Nmap", "pkg": "nmap", "backend": "apt", "desc": "Escáner de red y puertos, el estándar de la industria."},
+            {"name": "Masscan", "pkg": "masscan", "backend": "apt", "desc": "Escáner de puertos masivo a gran velocidad."},
+            {"name": "theHarvester", "pkg": "theharvester", "backend": "apt", "desc": "OSINT: correos, subdominios y hosts."},
+            {"name": "Recon-ng", "pkg": "recon-ng", "backend": "apt", "desc": "Framework de reconocimiento web modular."},
+            {"name": "DNSenum", "pkg": "dnsenum", "backend": "apt", "desc": "Enumeración de DNS."},
+            {"name": "Fierce", "pkg": "fierce", "backend": "apt", "desc": "Escáner de DNS para localizar objetivos."},
+            {"name": "Maltego", "pkg": "maltego", "backend": "apt", "desc": "Análisis de enlaces e inteligencia OSINT."},
+            {"name": "SpiderFoot", "pkg": "spiderfoot", "backend": "apt", "desc": "Automatización OSINT."}
+          ]
+        },
+        {
+          "id": "vuln-analysis",
+          "name": "Análisis de vulnerabilidades",
+          "apps": [
+            {"name": "Nikto", "pkg": "nikto", "backend": "apt", "desc": "Escáner de vulnerabilidades de servidores web."},
+            {"name": "OpenVAS / GVM", "pkg": "gvm", "backend": "apt", "desc": "Gestor de vulnerabilidades completo."},
+            {"name": "sqlmap", "pkg": "sqlmap", "backend": "apt", "desc": "Detección y explotación de inyección SQL."},
+            {"name": "wpscan", "pkg": "wpscan", "backend": "apt", "desc": "Escáner de seguridad de WordPress."},
+            {"name": "Lynis", "pkg": "lynis", "backend": "apt", "desc": "Auditoría de hardening del sistema."},
+            {"name": "Nuclei", "pkg": "nuclei", "backend": "apt", "desc": "Escáner basado en plantillas rápido."}
+          ]
+        },
+        {
+          "id": "web-apps",
+          "name": "Aplicaciones web",
+          "apps": [
+            {"name": "Burp Suite", "pkg": "burpsuite", "backend": "apt", "desc": "Proxy de interceptación y pruebas web."},
+            {"name": "OWASP ZAP", "pkg": "zaproxy", "backend": "apt", "desc": "Proxy de seguridad web de OWASP."},
+            {"name": "ffuf", "pkg": "ffuf", "backend": "apt", "desc": "Fuzzer web escrito en Go."},
+            {"name": "Gobuster", "pkg": "gobuster", "backend": "apt", "desc": "Fuerza bruta de directorios y DNS."},
+            {"name": "dirb", "pkg": "dirb", "backend": "apt", "desc": "Escáner de contenido web."},
+            {"name": "WhatWeb", "pkg": "whatweb", "backend": "apt", "desc": "Identificación de tecnologías web."}
+          ]
+        },
+        {
+          "id": "exploitation",
+          "name": "Explotación",
+          "apps": [
+            {"name": "Metasploit Framework", "pkg": "metasploit-framework", "backend": "apt", "desc": "Framework de explotación líder."},
+            {"name": "Searchsploit / Exploit-DB", "pkg": "exploitdb", "backend": "apt", "desc": "Base de datos de exploits local."},
+            {"name": "BeEF", "pkg": "beef-xss", "backend": "apt", "desc": "Framework de explotación de navegadores."},
+            {"name": "Social Engineering Toolkit", "pkg": "set", "backend": "apt", "desc": "Herramientas de ingeniería social."}
+          ]
+        },
+        {
+          "id": "password",
+          "name": "Ataques de contraseñas",
+          "apps": [
+            {"name": "John the Ripper", "pkg": "john", "backend": "apt", "desc": "Crackeador de contraseñas clásico."},
+            {"name": "Hashcat", "pkg": "hashcat", "backend": "apt", "desc": "Recuperación de contraseñas con GPU."},
+            {"name": "Hydra", "pkg": "hydra", "backend": "apt", "desc": "Fuerza bruta de servicios de red."},
+            {"name": "Medusa", "pkg": "medusa", "backend": "apt", "desc": "Fuerza bruta paralela."},
+            {"name": "Crunch", "pkg": "crunch", "backend": "apt", "desc": "Generador de diccionarios."},
+            {"name": "Wordlists (SecLists)", "pkg": "seclists", "backend": "apt", "desc": "Colección de diccionarios y payloads."}
+          ]
+        },
+        {
+          "id": "wireless",
+          "name": "Ataques inalámbricos",
+          "apps": [
+            {"name": "Aircrack-ng", "pkg": "aircrack-ng", "backend": "apt", "desc": "Suite de auditoría Wi-Fi."},
+            {"name": "Kismet", "pkg": "kismet", "backend": "apt", "desc": "Detector y sniffer de redes inalámbricas."},
+            {"name": "Wifite", "pkg": "wifite", "backend": "apt", "desc": "Automatización de ataques Wi-Fi."},
+            {"name": "Reaver", "pkg": "reaver", "backend": "apt", "desc": "Ataque a WPS."},
+            {"name": "Bettercap", "pkg": "bettercap", "backend": "apt", "desc": "Navaja suiza para ataques de red."}
+          ]
+        },
+        {
+          "id": "sniffing",
+          "name": "Sniffing y spoofing",
+          "apps": [
+            {"name": "Wireshark", "pkg": "wireshark", "backend": "apt", "desc": "Analizador de protocolos de red."},
+            {"name": "tcpdump", "pkg": "tcpdump", "backend": "apt", "desc": "Capturador de paquetes en consola."},
+            {"name": "Ettercap", "pkg": "ettercap-graphical", "backend": "apt", "desc": "Ataques man-in-the-middle."},
+            {"name": "Responder", "pkg": "responder", "backend": "apt", "desc": "Envenenamiento LLMNR/NBT-NS."},
+            {"name": "mitmproxy", "pkg": "mitmproxy", "backend": "apt", "desc": "Proxy HTTP interactivo."}
+          ]
+        },
+        {
+          "id": "forensics",
+          "name": "Análisis forense",
+          "apps": [
+            {"name": "Autopsy", "pkg": "autopsy", "backend": "apt", "desc": "Plataforma forense digital."},
+            {"name": "Sleuth Kit", "pkg": "sleuthkit", "backend": "apt", "desc": "Herramientas forenses de bajo nivel."},
+            {"name": "Volatility 3", "pkg": "volatility3", "backend": "apt", "desc": "Análisis forense de memoria."},
+            {"name": "Foremost", "pkg": "foremost", "backend": "apt", "desc": "Recuperación de archivos (carving)."},
+            {"name": "Binwalk", "pkg": "binwalk", "backend": "apt", "desc": "Análisis de firmware e imágenes."}
+          ]
+        },
+        {
+          "id": "reversing",
+          "name": "Ingeniería inversa",
+          "apps": [
+            {"name": "Ghidra", "pkg": "ghidra", "backend": "apt", "desc": "Suite de ingeniería inversa de la NSA."},
+            {"name": "radare2", "pkg": "radare2", "backend": "apt", "desc": "Framework de reversing en consola."},
+            {"name": "Cutter", "pkg": "cutter", "backend": "apt", "desc": "Interfaz gráfica para radare2/rizin."},
+            {"name": "GDB + pwndbg", "pkg": "gdb", "backend": "apt", "desc": "Depurador con extensiones de exploiting."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "internet",
+      "name": "Internet y navegadores",
+      "icon": "web-browser",
+      "apps": [
+        {"name": "Firefox", "pkg": "firefox-esr", "backend": "apt", "desc": "Navegador libre endurecido por defecto."},
+        {"name": "Tor Browser", "pkg": "torbrowser-launcher", "backend": "apt", "desc": "Navegación anónima a través de Tor."},
+        {"name": "Chromium", "pkg": "chromium", "backend": "apt", "desc": "Navegador de código abierto."},
+        {"name": "Thunderbird", "pkg": "thunderbird", "backend": "apt", "desc": "Cliente de correo con cifrado."},
+        {"name": "qBittorrent", "pkg": "qbittorrent", "backend": "apt", "desc": "Cliente BitTorrent libre."},
+        {"name": "Signal", "pkg": "org.signal.Signal", "backend": "flatpak", "desc": "Mensajería cifrada de extremo a extremo."},
+        {"name": "Element (Matrix)", "pkg": "im.riot.Riot", "backend": "flatpak", "desc": "Chat descentralizado y cifrado."}
+      ]
+    },
+    {
+      "id": "productivity",
+      "name": "Productividad",
+      "icon": "office-application",
+      "apps": [
+        {"name": "LibreOffice", "pkg": "libreoffice", "backend": "apt", "desc": "Suite ofimática completa."},
+        {"name": "OnlyOffice", "pkg": "org.onlyoffice.desktopeditors", "backend": "flatpak", "desc": "Ofimática compatible con MS Office."},
+        {"name": "Joplin", "pkg": "net.cozic.joplin_desktop", "backend": "flatpak", "desc": "Notas cifradas con sincronización."},
+        {"name": "Okular", "pkg": "okular", "backend": "apt", "desc": "Lector universal de documentos."},
+        {"name": "KeePassXC", "pkg": "keepassxc", "backend": "apt", "desc": "Gestor de contraseñas local y seguro."}
+      ]
+    },
+    {
+      "id": "development",
+      "name": "Desarrollo",
+      "icon": "applications-development",
+      "apps": [
+        {"name": "VS Codium", "pkg": "com.vscodium.codium", "backend": "flatpak", "desc": "Editor VS Code sin telemetría."},
+        {"name": "Git", "pkg": "git", "backend": "apt", "desc": "Control de versiones distribuido."},
+        {"name": "Python 3", "pkg": "python3", "backend": "apt", "desc": "Lenguaje Python y su intérprete."},
+        {"name": "Docker", "pkg": "docker.io", "backend": "apt", "desc": "Contenedores de aplicaciones."},
+        {"name": "GCC / build-essential", "pkg": "build-essential", "backend": "apt", "desc": "Compiladores y herramientas de C/C++."},
+        {"name": "Neovim", "pkg": "neovim", "backend": "apt", "desc": "Editor modal extensible."}
+      ]
+    },
+    {
+      "id": "multimedia",
+      "name": "Multimedia",
+      "icon": "applications-multimedia",
+      "apps": [
+        {"name": "VLC", "pkg": "vlc", "backend": "apt", "desc": "Reproductor multimedia universal."},
+        {"name": "GIMP", "pkg": "gimp", "backend": "apt", "desc": "Editor de imágenes avanzado."},
+        {"name": "Inkscape", "pkg": "inkscape", "backend": "apt", "desc": "Editor de gráficos vectoriales."},
+        {"name": "Audacity", "pkg": "audacity", "backend": "apt", "desc": "Edición de audio."},
+        {"name": "OBS Studio", "pkg": "com.obsproject.Studio", "backend": "flatpak", "desc": "Grabación y streaming."},
+        {"name": "Blender", "pkg": "blender", "backend": "apt", "desc": "Creación 3D."}
+      ]
+    },
+    {
+      "id": "privacy",
+      "name": "Privacidad y cifrado",
+      "icon": "security-medium",
+      "apps": [
+        {"name": "VeraCrypt", "pkg": "veracrypt", "backend": "apt", "desc": "Cifrado de discos y volúmenes."},
+        {"name": "GnuPG", "pkg": "gnupg", "backend": "apt", "desc": "Cifrado y firma con OpenPGP."},
+        {"name": "OnionShare", "pkg": "onionshare", "backend": "apt", "desc": "Compartir archivos anónimamente vía Tor."},
+        {"name": "WireGuard", "pkg": "wireguard", "backend": "apt", "desc": "VPN moderna y rápida."},
+        {"name": "BleachBit", "pkg": "bleachbit", "backend": "apt", "desc": "Borrado seguro y limpieza."}
+      ]
+    },
+    {
+      "id": "system",
+      "name": "Sistema y utilidades",
+      "icon": "applications-system",
+      "apps": [
+        {"name": "GParted", "pkg": "gparted", "backend": "apt", "desc": "Editor de particiones."},
+        {"name": "Timeshift", "pkg": "timeshift", "backend": "apt", "desc": "Copias de seguridad del sistema."},
+        {"name": "htop", "pkg": "htop", "backend": "apt", "desc": "Monitor de procesos interactivo."},
+        {"name": "Synaptic", "pkg": "synaptic", "backend": "apt", "desc": "Gestor de paquetes avanzado."},
+        {"name": "Flatpak", "pkg": "flatpak", "backend": "apt", "desc": "Soporte de apps Flatpak/Flathub."},
+        {"name": "Redshift", "pkg": "redshift-gtk", "backend": "apt", "desc": "Filtro de luz azul nocturno."},
+        {"name": "Flameshot", "pkg": "flameshot", "backend": "apt", "desc": "Capturas de pantalla con anotaciones."}
+      ]
+    },
+    {
+      "id": "communication",
+      "name": "Comunicación y redes sociales",
+      "icon": "internet-chat",
+      "apps": [
+        {"name": "Signal", "pkg": "org.signal.Signal", "backend": "flatpak", "desc": "Mensajería cifrada de extremo a extremo."},
+        {"name": "Telegram", "pkg": "org.telegram.desktop", "backend": "flatpak", "desc": "Mensajería rápida en la nube."},
+        {"name": "Element (Matrix)", "pkg": "im.riot.Riot", "backend": "flatpak", "desc": "Chat descentralizado y cifrado."},
+        {"name": "Discord", "pkg": "com.discordapp.Discord", "backend": "flatpak", "desc": "Voz, vídeo y chat para comunidades."},
+        {"name": "Thunderbird", "pkg": "thunderbird", "backend": "apt", "desc": "Cliente de correo con cifrado."},
+        {"name": "Jitsi Meet", "pkg": "org.jitsi.jitsi-meet", "backend": "flatpak", "desc": "Videollamadas libres sin cuenta."},
+        {"name": "HexChat", "pkg": "hexchat", "backend": "apt", "desc": "Cliente de IRC clásico."}
+      ]
+    },
+    {
+      "id": "graphics",
+      "name": "Gráficos y diseño",
+      "icon": "applications-graphics",
+      "apps": [
+        {"name": "GIMP", "pkg": "gimp", "backend": "apt", "desc": "Edición de imágenes avanzada."},
+        {"name": "Inkscape", "pkg": "inkscape", "backend": "apt", "desc": "Gráficos vectoriales."},
+        {"name": "Krita", "pkg": "krita", "backend": "apt", "desc": "Pintura digital e ilustración."},
+        {"name": "Blender", "pkg": "blender", "backend": "apt", "desc": "Modelado y animación 3D."},
+        {"name": "Darktable", "pkg": "darktable", "backend": "apt", "desc": "Revelado RAW y flujo fotográfico."},
+        {"name": "Scribus", "pkg": "scribus", "backend": "apt", "desc": "Maquetación y autoedición."}
+      ]
+    },
+    {
+      "id": "games",
+      "name": "Juegos y ocio",
+      "icon": "applications-games",
+      "apps": [
+        {"name": "Steam", "pkg": "com.valvesoftware.Steam", "backend": "flatpak", "desc": "Plataforma de videojuegos."},
+        {"name": "Lutris", "pkg": "net.lutris.Lutris", "backend": "flatpak", "desc": "Gestor de juegos (incl. Windows vía Wine)."},
+        {"name": "Heroic Games Launcher", "pkg": "com.heroicgameslauncher.hgl", "backend": "flatpak", "desc": "Epic y GOG en Linux."},
+        {"name": "RetroArch", "pkg": "org.libretro.RetroArch", "backend": "flatpak", "desc": "Emulación retro multiplataforma."},
+        {"name": "0 A.D.", "pkg": "0ad", "backend": "apt", "desc": "Estrategia en tiempo real libre."},
+        {"name": "SuperTuxKart", "pkg": "supertuxkart", "backend": "apt", "desc": "Carreras estilo kart, para todos."}
+      ]
+    },
+    {
+      "id": "productivity-extra",
+      "name": "Productividad avanzada",
+      "icon": "x-office-document",
+      "apps": [
+        {"name": "OnlyOffice", "pkg": "org.onlyoffice.desktopeditors", "backend": "flatpak", "desc": "Ofimática compatible con MS Office."},
+        {"name": "Obsidian", "pkg": "md.obsidian.Obsidian", "backend": "flatpak", "desc": "Notas enlazadas tipo wiki personal."},
+        {"name": "Joplin", "pkg": "net.cozic.joplin_desktop", "backend": "flatpak", "desc": "Notas cifradas con sincronización."},
+        {"name": "Calibre", "pkg": "calibre", "backend": "apt", "desc": "Gestión y lectura de libros electrónicos."},
+        {"name": "Nextcloud Desktop", "pkg": "com.nextcloud.desktopclient.nextcloud", "backend": "flatpak", "desc": "Sincroniza tu nube personal."},
+        {"name": "Bitwarden", "pkg": "com.bitwarden.desktop", "backend": "flatpak", "desc": "Gestor de contraseñas en la nube."}
+      ]
+    },
+    {
+      "id": "virtualization",
+      "name": "Virtualización y contenedores",
+      "icon": "computer",
+      "apps": [
+        {"name": "VirtualBox", "pkg": "virtualbox", "backend": "apt", "desc": "Máquinas virtuales de escritorio."},
+        {"name": "GNOME Boxes", "pkg": "gnome-boxes", "backend": "apt", "desc": "VMs sencillas con QEMU/KVM."},
+        {"name": "virt-manager", "pkg": "virt-manager", "backend": "apt", "desc": "Gestor gráfico de KVM/libvirt."},
+        {"name": "Docker", "pkg": "docker.io", "backend": "apt", "desc": "Contenedores de aplicaciones."},
+        {"name": "Podman", "pkg": "podman", "backend": "apt", "desc": "Contenedores sin demonio ni root."}
+      ]
+    }
+  ]
+}

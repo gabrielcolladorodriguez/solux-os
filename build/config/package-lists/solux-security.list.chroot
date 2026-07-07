@@ -1,0 +1,46 @@
+# Solux OS — Paquetes de seguridad / hardening del sistema
+# © 2026 Pollocrudo Company
+
+# --- Endurecimiento y auditoría ---
+apparmor
+apparmor-profiles
+apparmor-profiles-extra
+apparmor-utils
+ufw
+nftables
+fail2ban
+aide
+aide-common
+rkhunter
+chkrootkit
+clamav
+clamav-daemon
+clamav-freshclam
+lynis
+auditd
+libpam-pwquality
+libpam-tmpdir
+unattended-upgrades
+apt-listbugs
+needrestart
+debsums
+acct
+sysstat
+
+# --- Privacidad / red segura ---
+firejail
+firejail-profiles
+macchanger
+wireguard
+openssh-client
+torbrowser-launcher
+keepassxc
+gnupg2
+
+# --- Herramientas de red base ---
+nmap
+tcpdump
+net-tools
+dnsutils
+whois
+traceroute

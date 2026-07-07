@@ -1,0 +1,46 @@
+# Solux OS — Tema Solux Dark para GTK 2
+# © 2026 Pollocrudo Company
+
+gtk-color-scheme = "base_color:#15152A\nbg_color:#0D0D1A\nfg_color:#F1F5F9\ntext_color:#F1F5F9\nselected_bg_color:#F97316\nselected_fg_color:#0D0D1A\ntooltip_bg_color:#1E1E38\ntooltip_fg_color:#F1F5F9"
+
+style "solux-default" {
+  xthickness = 1
+  ythickness = 1
+
+  fg[NORMAL]        = "#F1F5F9"
+  fg[PRELIGHT]      = "#FFFFFF"
+  fg[SELECTED]      = "#0D0D1A"
+  fg[ACTIVE]        = "#F1F5F9"
+  fg[INSENSITIVE]   = "#64748B"
+
+  bg[NORMAL]        = "#15152A"
+  bg[PRELIGHT]      = "#1E1E38"
+  bg[SELECTED]      = "#F97316"
+  bg[ACTIVE]        = "#1E1E38"
+  bg[INSENSITIVE]   = "#12122A"
+
+  base[NORMAL]      = "#0D0D1A"
+  base[PRELIGHT]    = "#1E1E38"
+  base[SELECTED]    = "#F97316"
+  base[ACTIVE]      = "#1E1E38"
+  base[INSENSITIVE] = "#15152A"
+
+  text[NORMAL]      = "#F1F5F9"
+  text[PRELIGHT]    = "#F1F5F9"
+  text[SELECTED]    = "#0D0D1A"
+  text[ACTIVE]      = "#F1F5F9"
+  text[INSENSITIVE] = "#64748B"
+
+  engine "pixmap" {
+  }
+}
+
+class "*" style "solux-default"
+
+# Selección
+style "solux-menu" {
+  bg[NORMAL] = "#1E1E38"
+  fg[PRELIGHT] = "#0D0D1A"
+  bg[PRELIGHT] = "#F97316"
+}
+class "GtkMenu*" style "solux-menu"

@@ -1,0 +1,37 @@
+{
+  "name": "Solux OS Brand Palette",
+  "version": "1.0.0",
+  "company": "Pollocrudo Company",
+  "year": 2026,
+  "primary": {
+    "orange": "#F97316",
+    "gold": "#FBBF24",
+    "blue": "#3B82F6",
+    "cyan": "#22D3EE"
+  },
+  "background": {
+    "base": "#0D0D1A",
+    "surface": "#15152A",
+    "surfaceAlt": "#1E1E38",
+    "border": "#2A2A4A"
+  },
+  "text": {
+    "primary": "#F1F5F9",
+    "secondary": "#94A3B8",
+    "disabled": "#64748B"
+  },
+  "state": {
+    "success": "#22C55E",
+    "warning": "#F59E0B",
+    "danger": "#EF4444",
+    "info": "#38BDF8"
+  },
+  "gradients": {
+    "sun": ["#FBBF24", "#F97316", "#EA580C"],
+    "brand": ["#F97316", "#3B82F6"]
+  },
+  "fonts": {
+    "ui": "Inter",
+    "mono": "JetBrains Mono"
+  }
+}

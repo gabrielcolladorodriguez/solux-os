@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Solux Welcome
+Comment=Asistente de bienvenida en el primer arranque
+Exec=sh -c '[ -f "$HOME/.config/solux/welcome-disabled" ] || solux-welcome'
+Icon=solux-welcome
+Terminal=false
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

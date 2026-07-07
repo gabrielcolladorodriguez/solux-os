@@ -1,0 +1,15 @@
+# Solux OS — /etc/default/grub
+# © 2026 Pollocrudo Company
+
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="Solux OS"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 lockdown=confidentiality slab_nomerge init_on_alloc=1 init_on_free=1 page_alloc.shuffle=1 randomize_kstack_offset=1 mce=0 pti=on vsyscall=none"
+GRUB_CMDLINE_LINUX=""
+GRUB_THEME="/boot/grub/themes/solux/theme.txt"
+GRUB_GFXMODE=1920x1080,1280x800,auto
+GRUB_BACKGROUND="/boot/grub/themes/solux/background.png"
+GRUB_DISABLE_RECOVERY="false"
+GRUB_TERMINAL_OUTPUT=gfxterm
+
+# La contraseña de GRUB se añade en /etc/grub.d/40_custom por el hook de hardening.

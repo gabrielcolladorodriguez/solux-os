@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D0D1A"/>
+      <stop offset="55%" stop-color="#1E1E38"/>
+      <stop offset="100%" stop-color="#3B0764"/>
+    </linearGradient>
+    <linearGradient id="sun2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky2)"/>
+  <!-- Sun with bands -->
+  <clipPath id="c"><circle cx="960" cy="560" r="240"/></clipPath>
+  <circle cx="960" cy="560" r="240" fill="url(#sun2)"/>
+  <g clip-path="url(#c)" fill="#0D0D1A">
+    <rect x="720" y="640" width="480" height="12"/>
+    <rect x="720" y="680" width="480" height="16"/>
+    <rect x="720" y="726" width="480" height="22"/>
+    <rect x="720" y="778" width="480" height="30"/>
+  </g>
+  <!-- Perspective grid -->
+  <g stroke="#22D3EE" stroke-width="2" opacity="0.55" fill="none">
+    <line x1="960" y1="620" x2="-400" y2="1080"/>
+    <line x1="960" y1="620" x2="220" y2="1080"/>
+    <line x1="960" y1="620" x2="620" y2="1080"/>
+    <line x1="960" y1="620" x2="960" y2="1080"/>
+    <line x1="960" y1="620" x2="1300" y2="1080"/>
+    <line x1="960" y1="620" x2="1700" y2="1080"/>
+    <line x1="960" y1="620" x2="2320" y2="1080"/>
+  </g>
+  <g stroke="#3B82F6" stroke-width="2" opacity="0.5" fill="none">
+    <line x1="0" y1="660" x2="1920" y2="660"/>
+    <line x1="0" y1="712" x2="1920" y2="712"/>
+    <line x1="0" y1="778" x2="1920" y2="778"/>
+    <line x1="0" y1="862" x2="1920" y2="862"/>
+    <line x1="0" y1="966" x2="1920" y2="966"/>
+  </g>
+</svg>

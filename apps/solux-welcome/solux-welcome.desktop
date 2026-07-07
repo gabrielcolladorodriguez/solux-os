@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Solux Welcome
+Name[es]=Bienvenida Solux
+Comment=Welcome assistant for Solux OS
+Comment[es]=Asistente de bienvenida de Solux OS
+Exec=solux-welcome
+Icon=solux-welcome
+Terminal=false
+Categories=System;GTK;
+StartupNotify=true

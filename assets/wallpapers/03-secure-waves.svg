@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0D0D1A"/>
+      <stop offset="100%" stop-color="#15152A"/>
+    </linearGradient>
+    <linearGradient id="w3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg3)"/>
+  <g fill="none" stroke="url(#w3)" stroke-width="2" opacity="0.55">
+    <path d="M0 540 C 480 380 960 700 1920 460"/>
+    <path d="M0 580 C 480 420 960 740 1920 500"/>
+    <path d="M0 620 C 480 460 960 780 1920 540"/>
+    <path d="M0 660 C 480 500 960 820 1920 580"/>
+    <path d="M0 700 C 480 540 960 860 1920 620"/>
+    <path d="M0 740 C 480 580 960 900 1920 660"/>
+    <path d="M0 780 C 480 620 960 940 1920 700"/>
+  </g>
+  <!-- Faint shield -->
+  <g opacity="0.10" fill="none" stroke="#3B82F6" stroke-width="6">
+    <path d="M960 300 L1140 370 L1140 560 C1140 680 1060 760 960 800 C860 760 780 680 780 560 L780 370 Z"/>
+  </g>
+</svg>

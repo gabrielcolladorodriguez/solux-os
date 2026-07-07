@@ -1,0 +1,33 @@
+#!/bin/sh
+# Solux OS — Añade el repositorio de Kali Linux para el arsenal de seguridad
+# © 2026 Pollocrudo Company
+set -e
+
+echo "[Solux][01-repos] Configurando repositorio de Kali Linux..."
+
+# Clave del repositorio de Kali (archive key)
+install -d -m 0755 /usr/share/keyrings
+if command -v wget >/dev/null 2>&1; then
+    wget -qO - https://archive.kali.org/archive-key.asc \
+        | gpg --dearmor -o /usr/share/keyrings/kali-archive-keyring.gpg || true
+fi
+
+# Repositorio de Kali con prioridad baja: solo se usa para paquetes de seguridad,
+# nunca para reemplazar la base estable de Debian.
+cat > /etc/apt/sources.list.d/kali.list <<'EOF'
+deb [signed-by=/usr/share/keyrings/kali-archive-keyring.gpg] http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware
+EOF
+
+# Pinning: Debian Bookworm manda; Kali solo aporta lo que no existe en Debian.
+cat > /etc/apt/preferences.d/kali-pinning <<'EOF'
+Package: *
+Pin: release o=Debian
+Pin-Priority: 900
+
+Package: *
+Pin: release o=Kali
+Pin-Priority: 100
+EOF
+
+apt-get update || true
+echo "[Solux][01-repos] Repositorio de Kali configurado."

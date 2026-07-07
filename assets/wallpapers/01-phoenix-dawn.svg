@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D0D1A"/>
+      <stop offset="45%" stop-color="#241033"/>
+      <stop offset="75%" stop-color="#7C2D12"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="82%" r="45%">
+      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#F97316" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <!-- Sun -->
+  <circle cx="960" cy="880" r="180" fill="#FDE68A" opacity="0.95"/>
+  <circle cx="960" cy="880" r="230" fill="none" stroke="#FBBF24" stroke-width="2" opacity="0.5"/>
+  <!-- Mountain silhouettes -->
+  <path d="M0 780 L300 640 L560 760 L820 600 L1080 780 L1360 620 L1660 780 L1920 660 L1920 1080 L0 1080 Z" fill="#160A24" opacity="0.9"/>
+  <path d="M0 900 L360 800 L720 900 L1080 820 L1440 910 L1920 830 L1920 1080 L0 1080 Z" fill="#0D0518"/>
+  <!-- Stars -->
+  <g fill="#F1F5F9">
+    <circle cx="200" cy="120" r="2"/><circle cx="450" cy="80" r="1.5"/><circle cx="700" cy="160" r="2"/>
+    <circle cx="1100" cy="100" r="1.5"/><circle cx="1400" cy="140" r="2"/><circle cx="1650" cy="90" r="1.5"/>
+    <circle cx="320" cy="220" r="1"/><circle cx="880" cy="60" r="1"/><circle cx="1550" cy="220" r="1"/>
+  </g>
+</svg>

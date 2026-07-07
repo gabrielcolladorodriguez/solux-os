@@ -1,0 +1,82 @@
+# Solux OS — Aplicaciones de uso diario (productividad, ocio, comunicación)
+# © 2026 Pollocrudo Company
+#
+# Solux OS es a la vez una distro de seguridad (como Kali) y un escritorio cómodo para
+# el día a día. Esta lista aporta lo segundo.
+
+# --- Navegadores ---
+firefox-esr
+# (Chromium y Tor Browser se ofrecen desde la Store)
+
+# --- Ofimática y documentos ---
+libreoffice
+libreoffice-gtk3
+libreoffice-l10n-es
+hunspell-es
+evince
+
+# --- Correo y comunicación ---
+thunderbird
+thunderbird-l10n-es-es
+hexchat
+
+# --- Multimedia ---
+vlc
+mpv
+rhythmbox
+gimp
+inkscape
+audacity
+handbrake
+gnome-sound-recorder
+ffmpeg
+gstreamer1.0-plugins-good
+gstreamer1.0-plugins-bad
+gstreamer1.0-plugins-ugly
+gstreamer1.0-libav
+
+# --- Imágenes y captura ---
+ristretto
+flameshot
+gpick
+
+# --- Utilidades de escritorio ---
+galculator
+gnome-calendar
+gnome-disk-utility
+baobab
+catfish
+gnome-system-monitor
+xarchiver
+seahorse
+redshift
+blueman
+network-manager-openvpn-gnome
+
+# --- Impresión y escaneo ---
+cups
+system-config-printer
+simple-scan
+
+# --- Fuentes extra para documentos ---
+fonts-liberation
+fonts-dejavu
+fonts-firacode
+fonts-font-awesome
+
+# --- Drivers y firmware (compatibilidad de hardware) ---
+firmware-iwlwifi
+firmware-realtek
+firmware-atheros
+firmware-misc-nonfree
+intel-microcode
+amd64-microcode
+mesa-vulkan-drivers
+va-driver-all
+xserver-xorg-video-all
+
+# --- Compatibilidad de formatos ---
+p7zip-full
+unrar-free
+unzip
+zip

@@ -1,0 +1,95 @@
+# Solux OS — Menú Whisker con estilo propio
+# © 2026 Pollocrudo Company
+# Menú moderno tipo "inicio": búsqueda arriba, categorías a un lado, favoritos.
+
+favorites=firefox-esr.desktop,solux-store.desktop,solux-security-center.desktop,solux-tweaks.desktop,xfce4-terminal.desktop,thunar.desktop,libreoffice-startcenter.desktop,org.xfce.mousepad.desktop
+recent=
+
+# --- Botón del panel ---
+button-title=Solux
+button-icon=solux-logo
+button-single-row=false
+show-button-title=true
+show-button-icon=true
+
+# --- Contenido de los lanzadores ---
+launcher-show-name=true
+launcher-show-description=true
+launcher-show-tooltip=true
+item-icon-size=3
+hover-switch-category=true
+
+# --- Categorías ---
+category-show-name=true
+category-icon-size=2
+load-hierarchy=false
+default-category=0
+
+# --- Recientes ---
+recent-items-max=8
+favorites-in-recent=true
+
+# --- Distribución (aspecto moderno, distinto al XFCE clásico) ---
+position-search-alternate=true
+position-commands-alternate=true
+position-categories-alternate=true
+stay-on-focus-out=false
+menu-width=520
+menu-height=640
+menu-opacity=96
+show-command-settings=true
+show-command-lockscreen=true
+show-command-switchuser=false
+show-command-logout=true
+show-command-menueditor=true
+show-command-profile=true
+
+# --- Comandos ---
+command-settings=xfce4-settings-manager
+command-lockscreen=xflock4
+command-logout=xfce4-session-logout
+command-menueditor=menulibre
+command-profile=mugshot
+
+# --- Perfil de usuario ---
+show-username=true
+
+# --- Búsqueda ---
+search-actions=6
+
+# Acción de búsqueda web (DuckDuckGo por privacidad)
+[SearchAction0]
+name=DuckDuckGo
+pattern=!
+command=exo-open --launch WebBrowser https://duckduckgo.com/?q=%u
+regex=false
+
+[SearchAction1]
+name=Wikipedia
+pattern=wiki
+command=exo-open --launch WebBrowser https://es.wikipedia.org/wiki/Special:Search?search=%u
+regex=false
+
+[SearchAction2]
+name=Buscar en la Store
+pattern=store
+command=solux-store
+regex=false
+
+[SearchAction3]
+name=Correo
+pattern=mailto:
+command=exo-open --launch MailReader %u
+regex=true
+
+[SearchAction4]
+name=Ejecutar en terminal
+pattern=$
+command=xfce4-terminal -x %s
+regex=false
+
+[SearchAction5]
+name=Man
+pattern=#
+command=xfce4-terminal -x man %u
+regex=false

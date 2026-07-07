@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Solux OS
+Description=Pantalla de arranque de Solux OS con logo animado
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/solux
+ScriptFile=/usr/share/plymouth/themes/solux/solux.script

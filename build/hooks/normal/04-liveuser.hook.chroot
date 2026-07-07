@@ -1,0 +1,41 @@
+#!/bin/sh
+# Solux OS — Configura el usuario en vivo y fuerza cambio de contraseña
+# © 2026 Pollocrudo Company
+set -e
+
+echo "[Solux][04-liveuser] Configurando usuario en vivo 'solux'..."
+
+# Shell por defecto: zsh si está instalado, si no bash
+DEFAULT_SHELL=/bin/bash
+[ -x /usr/bin/zsh ] && DEFAULT_SHELL=/usr/bin/zsh
+
+# Crear grupo/usuario si no existe (en vivo, live-config también lo gestiona)
+if ! id solux >/dev/null 2>&1; then
+    useradd -m -s "$DEFAULT_SHELL" -G sudo,audio,video,plugdev,netdev solux || true
+    echo "solux:solux" | chpasswd || true
+fi
+# Zsh también para futuros usuarios creados por el instalador
+if [ -x /usr/bin/zsh ]; then
+    sed -i 's|^SHELL=.*|SHELL=/usr/bin/zsh|' /etc/default/useradd 2>/dev/null || true
+fi
+
+# Forzar cambio de contraseña en el primer login
+chage -d 0 solux 2>/dev/null || true
+
+# Lanzador de instalación en el escritorio del usuario en vivo
+install -d /etc/skel/Desktop
+cat > /etc/skel/Desktop/install-solux.desktop <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Instalar Solux OS
+Comment=Instala Solux OS en tu disco
+Exec=sudo calamares
+Icon=solux-logo
+Terminal=false
+EOF
+chmod +x /etc/skel/Desktop/install-solux.desktop
+
+# root bloqueado
+passwd -l root 2>/dev/null || true
+
+echo "[Solux][04-liveuser] Usuario en vivo configurado."

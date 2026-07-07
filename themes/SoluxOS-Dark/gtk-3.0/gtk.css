@@ -1,0 +1,151 @@
+/*
+ * Solux OS — Tema Solux Dark para GTK 3
+ * © 2026 Pollocrudo Company
+ */
+
+@define-color solux_base        #0D0D1A;
+@define-color solux_surface     #15152A;
+@define-color solux_surface_alt #1E1E38;
+@define-color solux_border      #2A2A4A;
+
+@define-color solux_orange      #F97316;
+@define-color solux_gold        #FBBF24;
+@define-color solux_blue        #3B82F6;
+@define-color solux_cyan        #22D3EE;
+
+@define-color solux_text            #F1F5F9;
+@define-color solux_text_secondary  #94A3B8;
+@define-color solux_text_disabled   #64748B;
+
+@define-color solux_success #22C55E;
+@define-color solux_warning #F59E0B;
+@define-color solux_danger  #EF4444;
+
+/* GNOME/GTK named colors */
+@define-color theme_bg_color            @solux_base;
+@define-color theme_base_color          @solux_surface;
+@define-color theme_fg_color            @solux_text;
+@define-color theme_text_color          @solux_text;
+@define-color theme_selected_bg_color   @solux_orange;
+@define-color theme_selected_fg_color   #0D0D1A;
+@define-color insensitive_fg_color      @solux_text_disabled;
+@define-color borders                   @solux_border;
+@define-color warning_color             @solux_warning;
+@define-color error_color               @solux_danger;
+@define-color success_color             @solux_success;
+
+* {
+  outline-color: alpha(@solux_orange, 0.6);
+}
+
+window, .background {
+  background-color: @solux_base;
+  color: @solux_text;
+}
+
+/* Headerbars / titlebars */
+headerbar, .titlebar {
+  background: linear-gradient(to bottom, @solux_surface_alt, @solux_surface);
+  color: @solux_text;
+  border-bottom: 1px solid @solux_border;
+  padding: 4px 8px;
+}
+
+headerbar .title { font-weight: 700; }
+
+/* Buttons */
+button {
+  background: @solux_surface_alt;
+  color: @solux_text;
+  border: 1px solid @solux_border;
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+button:hover { background: shade(@solux_surface_alt, 1.2); border-color: @solux_orange; }
+button:active { background: shade(@solux_surface_alt, 0.9); }
+button:disabled { color: @solux_text_disabled; }
+
+button.suggested-action {
+  background: linear-gradient(to bottom, @solux_gold, @solux_orange);
+  color: #0D0D1A;
+  border: none;
+  font-weight: 700;
+}
+button.suggested-action:hover { background: linear-gradient(to bottom, #FCD34D, #FB923C); }
+
+button.destructive-action {
+  background: @solux_danger;
+  color: #0D0D1A;
+  border: none;
+  font-weight: 700;
+}
+
+/* Entries */
+entry {
+  background: @solux_base;
+  color: @solux_text;
+  border: 1px solid @solux_border;
+  border-radius: 8px;
+  padding: 6px 10px;
+  caret-color: @solux_orange;
+}
+entry:focus { border-color: @solux_orange; box-shadow: 0 0 0 2px alpha(@solux_orange, 0.35); }
+
+/* Selections */
+selection, *:selected {
+  background-color: @solux_orange;
+  color: #0D0D1A;
+}
+
+/* Sidebar / lists */
+list, treeview.view {
+  background: @solux_surface;
+  color: @solux_text;
+}
+row:selected, treeview.view:selected {
+  background: @solux_orange;
+  color: #0D0D1A;
+}
+
+/* Notebook tabs */
+notebook > header { background: @solux_surface; border-color: @solux_border; }
+notebook > header > tabs > tab {
+  color: @solux_text_secondary;
+  padding: 6px 14px;
+}
+notebook > header > tabs > tab:checked {
+  color: @solux_orange;
+  box-shadow: inset 0 -3px @solux_orange;
+}
+
+/* Scrollbars */
+scrollbar { background: transparent; }
+scrollbar slider {
+  background: @solux_border;
+  border-radius: 8px;
+  min-width: 8px;
+  min-height: 8px;
+}
+scrollbar slider:hover { background: @solux_orange; }
+
+/* Progress / levelbars */
+progressbar progress { background: linear-gradient(to right, @solux_orange, @solux_gold); }
+levelbar block.filled { background: @solux_success; }
+
+/* Switches */
+switch:checked { background: @solux_orange; }
+
+/* Menus / popovers */
+menu, popover, .menu, .context-menu {
+  background: @solux_surface_alt;
+  color: @solux_text;
+  border: 1px solid @solux_border;
+  border-radius: 10px;
+}
+menuitem:hover { background: @solux_orange; color: #0D0D1A; }
+
+/* Tooltips */
+tooltip { background: @solux_surface_alt; color: @solux_text; border: 1px solid @solux_orange; border-radius: 6px; }
+
+/* Links */
+*:link { color: @solux_blue; }

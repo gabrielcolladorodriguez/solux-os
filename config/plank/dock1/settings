@@ -1,0 +1,21 @@
+[PlankDockPreferences]
+#Solux OS — Preferencias del dock inferior
+CurrentWorkspaceOnly=false
+IconSize=48
+HideMode=1
+UnhideDelay=0
+HideDelay=0
+Monitor=
+DockItems=firefox-esr.dockitem;;thunar.dockitem;;solux-store.dockitem;;solux-security-center.dockitem;;solux-tweaks.dockitem;;xfce4-terminal.dockitem;;libreoffice.dockitem
+Position=2
+Offset=0
+Theme=Solux
+Alignment=3
+ItemsAlignment=3
+LockItems=false
+PressureReveal=false
+PinnedOnly=false
+AutoPinning=true
+ShowDockItem=true
+ZoomEnabled=true
+ZoomPercent=130

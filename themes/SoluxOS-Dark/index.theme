@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=SoluxOS-Dark
+Comment=Tema oscuro oficial de Solux OS — naranja y azul sobre fondo profundo
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=SoluxOS-Dark
+MetacityTheme=SoluxOS-Dark
+IconTheme=Solux-Icons
+CursorTheme=Adwaita
+ButtonLayout=close,maximize,minimize:menu

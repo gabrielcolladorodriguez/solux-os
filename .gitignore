@@ -1,0 +1,22 @@
+# Solux OS — archivos que no van al repositorio
+
+# Árbol de compilación de live-build
+build/work/
+build/generated/
+build/.wsl-run.sh
+
+# ISOs y sus hashes (se generan; se publican como artefactos, no en git)
+*.iso
+*.iso.sha256
+
+# Empaquetados temporales
+solux-os.zip
+
+# Cachés de Python
+__pycache__/
+*.pyc
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log

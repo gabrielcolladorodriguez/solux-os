@@ -1,0 +1,79 @@
+name: Build Solux OS ISO
+
+# Compila la ISO de Solux OS dentro de un contenedor Debian Bookworm nativo,
+# lo que evita los problemas de compilar Debian sobre un host Ubuntu.
+# © 2026 Pollocrudo Company
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'assets/**'
+      - 'docs/**'
+  workflow_dispatch:
+    inputs:
+      edition:
+        description: "Edición a compilar"
+        type: choice
+        default: lite
+        options: [ lite, full ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:bookworm
+      options: --privileged
+    steps:
+      - name: Checkout del proyecto
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias de compilación
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            live-build git rsync librsvg2-bin xorriso \
+            ca-certificates debian-archive-keyring \
+            squashfs-tools dosfstools mtools
+
+      - name: Liberar espacio en disco
+        run: |
+          df -h
+          rm -rf /usr/share/dotnet /usr/local/lib/android 2>/dev/null || true
+
+      - name: Seleccionar edición (lite quita el arsenal pesado de Kali)
+        run: |
+          cd build/config/package-lists
+          if [ "${{ github.event.inputs.edition }}" != "full" ]; then
+            echo "Edición LITE: desactivando arsenal de Kali."
+            [ -f solux-kali-arsenal.list.chroot ] && \
+              mv solux-kali-arsenal.list.chroot solux-kali-arsenal.list.chroot.off || true
+          else
+            echo "Edición FULL: incluye todo el arsenal de Kali."
+          fi
+
+      - name: Compilar la ISO
+        run: |
+          cd build
+          bash ./build.sh
+
+      - name: Renombrar y calcular hash
+        run: |
+          cd build
+          ISO=$(ls *.iso | head -1)
+          sha256sum "$ISO" > "$ISO.sha256"
+          echo "ISO=$ISO" >> "$GITHUB_ENV"
+
+      - name: Subir la ISO como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: solux-os-iso
+          path: |
+            build/*.iso
+            build/*.iso.sha256
+          retention-days: 14
+          if-no-files-found: error

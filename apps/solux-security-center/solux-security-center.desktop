@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Solux Security Center
+Name[es]=Centro de Seguridad Solux
+GenericName=Security Dashboard
+GenericName[es]=Panel de seguridad
+Comment=Monitor and control the security posture of Solux OS
+Comment[es]=Supervisa y controla la seguridad de Solux OS
+Exec=solux-security-center
+Icon=solux-security-center
+Terminal=false
+Categories=System;Security;Settings;GTK;
+Keywords=security;firewall;antivirus;hardening;audit;
+StartupNotify=true
