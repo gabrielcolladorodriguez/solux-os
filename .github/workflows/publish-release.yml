@@ -27,34 +27,31 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: iso
 
-      - name: Partir la ISO (límite de 2 GB por archivo en Releases) y publicar
+      - name: Partir la ISO (limite de 2 GB por archivo en Releases) y publicar
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd iso
           ISO=$(ls *.iso)
           echo "ISO original: $ISO"
-          # Partir en trozos de 1900 MB (< 2 GB cada uno)
           split -b 1900M -d -a 1 "$ISO" "${ISO}.part"
-          rm -f "$ISO"     # no subir el archivo entero (>2 GB)
+          rm -f "$ISO"
           ls -lh
           TAG="v1.0-phoenix"
-          NOTES="ISO oficial de Solux OS 1.0 \"Phoenix\" (edición lite, 2.6 GB).
-
-GitHub limita cada archivo de Release a 2 GB, así que va en 2 partes. Descárgalas las dos y únelas:
-
-Windows (CMD):
-  copy /b \"${ISO}.part0\" + \"${ISO}.part1\" \"${ISO}\"
-
-Linux / macOS:
-  cat ${ISO}.part* > ${ISO}
-
-Verificar integridad:
-  sha256sum -c ${ISO}.sha256"
-          # Recrear el release limpio
+          {
+            printf 'ISO oficial de Solux OS 1.0 "Phoenix" (edicion lite, 2.6 GB).\n\n'
+            printf 'GitHub limita cada archivo de Release a 2 GB, por eso va en 2 partes.\n'
+            printf 'Descarga las dos y unelas:\n\n'
+            printf 'Windows (CMD):\n'
+            printf '  copy /b "%s.part0" + "%s.part1" "%s"\n\n' "$ISO" "$ISO" "$ISO"
+            printf 'Linux / macOS:\n'
+            printf '  cat %s.part* > %s\n\n' "$ISO" "$ISO"
+            printf 'Verificar integridad:\n'
+            printf '  sha256sum -c %s.sha256\n' "$ISO"
+          } > notes.txt
           gh release delete "$TAG" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag 2>/dev/null || true
           gh release create "$TAG" ${ISO}.part* ${ISO}.sha256 \
             --repo "$GITHUB_REPOSITORY" \
-            --title "Solux OS 1.0 \"Phoenix\"" \
-            --notes "$NOTES"
+            --title 'Solux OS 1.0 "Phoenix"' \
+            --notes-file notes.txt
           echo "Publicado en: https://github.com/$GITHUB_REPOSITORY/releases/tag/$TAG"

@@ -11,6 +11,7 @@ on:
       - '**.md'
       - 'assets/**'
       - 'docs/**'
+      - '.github/**'
   workflow_dispatch:
     inputs:
       edition:
