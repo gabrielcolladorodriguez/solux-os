@@ -85,13 +85,13 @@ install atm /bin/true
 install firewire-core /bin/true
 install thunderbolt /bin/true
 # Sistemas de ficheros poco comunes
+# NOTA: NO se pueden blacklistear squashfs ni udf — la ISO en vivo los necesita
+# para montar su propio sistema de archivos y arrancar.
 install cramfs /bin/true
 install freevxfs /bin/true
 install jffs2 /bin/true
 install hfs /bin/true
 install hfsplus /bin/true
-install squashfs /bin/true
-install udf /bin/true
 EOF
 
 # =====================================================================================
