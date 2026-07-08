@@ -63,8 +63,10 @@ log "Rebrandeando el menú de arranque a Solux OS..."
 if [ -d /usr/share/live/build/bootloaders ]; then
     rm -rf config/bootloaders
     cp -r /usr/share/live/build/bootloaders config/bootloaders
-    # Reemplazar todas las menciones de Debian por Solux OS en los textos del menú
-    grep -rIl "Debian" config/bootloaders 2>/dev/null | while read -r f; do
+    # Reemplazar todas las menciones de Debian por Solux OS en los textos del menú.
+    # (|| true para no abortar con set -e/pipefail si no hay coincidencias)
+    rebrand_files=$(grep -rIl "Debian" config/bootloaders 2>/dev/null || true)
+    for f in $rebrand_files; do
         sed -i 's|Debian GNU/Linux|Solux OS|g; s|Debian Live|Solux OS|g; s|Debian|Solux OS|g' "$f"
     done
 fi
