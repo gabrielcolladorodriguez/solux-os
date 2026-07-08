@@ -49,6 +49,8 @@ lb config \
     --parent-mirror-chroot-security "http://security.debian.org/debian-security/" \
     --parent-mirror-binary "http://deb.debian.org/debian/" \
     --parent-mirror-binary-security "http://security.debian.org/debian-security/" \
+    --binary-images iso-hybrid \
+    --bootloaders "syslinux,grub-efi" \
     --debian-installer none \
     --bootappend-live "boot=live components username=solux hostname=solux locales=es_ES.UTF-8 keyboard-layouts=es" \
     --iso-application "Solux OS" \
@@ -94,12 +96,15 @@ fi
 
 # Apps Solux
 mkdir -p "$INC/usr/share/solux/store" "$INC/usr/share/solux/security-center" \
-         "$INC/usr/share/solux/welcome" "$INC/usr/share/solux/tweaks"
+         "$INC/usr/share/solux/welcome" "$INC/usr/share/solux/tweaks" \
+         "$INC/usr/share/solux/browser" "$INC/usr/share/solux/notes"
 cp "$PROJECT_DIR/apps/solux-store/solux_store.py"                    "$INC/usr/share/solux/store/"
 cp "$PROJECT_DIR/apps/solux-store/catalog.json"                     "$INC/usr/share/solux/store/"
 cp "$PROJECT_DIR/apps/solux-security-center/solux_security_center.py" "$INC/usr/share/solux/security-center/"
 cp "$PROJECT_DIR/apps/solux-welcome/solux_welcome.py"               "$INC/usr/share/solux/welcome/"
 cp "$PROJECT_DIR/apps/solux-tweaks/solux_tweaks.py"                 "$INC/usr/share/solux/tweaks/"
+cp "$PROJECT_DIR/apps/solux-browser/solux_browser.py"              "$INC/usr/share/solux/browser/"
+cp "$PROJECT_DIR/apps/solux-notes/solux_notes.py"                  "$INC/usr/share/solux/notes/"
 
 # Lanzadores .desktop
 mkdir -p "$INC/usr/share/applications"
@@ -107,6 +112,14 @@ cp "$PROJECT_DIR/apps/solux-store/solux-store.desktop"                       "$I
 cp "$PROJECT_DIR/apps/solux-security-center/solux-security-center.desktop"   "$INC/usr/share/applications/"
 cp "$PROJECT_DIR/apps/solux-welcome/solux-welcome.desktop"                   "$INC/usr/share/applications/"
 cp "$PROJECT_DIR/apps/solux-tweaks/solux-tweaks.desktop"                     "$INC/usr/share/applications/"
+cp "$PROJECT_DIR/apps/solux-browser/solux-browser.desktop"                   "$INC/usr/share/applications/"
+cp "$PROJECT_DIR/apps/solux-notes/solux-notes.desktop"                       "$INC/usr/share/applications/"
+
+# Marca en terminal: neofetch propio + ASCII, y colores de terminal
+mkdir -p "$INC/etc/solux" "$INC/etc/skel/.config/xfce4/terminal"
+cp "$PROJECT_DIR/config/branding/solux.neofetch"   "$INC/etc/solux/neofetch.conf"
+cp "$PROJECT_DIR/config/branding/solux-ascii.txt"  "$INC/etc/solux/solux-ascii.txt"
+cp "$PROJECT_DIR/config/xfce4/terminalrc"          "$INC/etc/skel/.config/xfce4/terminal/terminalrc"
 
 # Firefox endurecido (políticas + autoconfig)
 mkdir -p "$INC/usr/lib/firefox-esr/distribution" "$INC/usr/lib/firefox-esr/defaults/pref"

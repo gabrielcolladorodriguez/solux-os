@@ -48,9 +48,13 @@ alias store='solux-store'
 alias scan-home='clamscan -r -i ~'
 alias checkroot='sudo rkhunter --check --skip-keypress'
 
-# --- Bienvenida en terminal ---
+# --- Bienvenida en terminal (marca Solux) ---
 if command -v neofetch >/dev/null 2>&1; then
-    neofetch --ascii_distro debian 2>/dev/null
+    if [ -f /etc/solux/neofetch.conf ]; then
+        neofetch --config /etc/solux/neofetch.conf --ascii /etc/solux/solux-ascii.txt 2>/dev/null
+    else
+        neofetch 2>/dev/null
+    fi
 fi
 
 export EDITOR=nano

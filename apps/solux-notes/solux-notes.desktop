@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Solux Notes
+Name[es]=Notas Solux
+GenericName=Notes
+GenericName[es]=Notas
+Comment=Fast local Markdown notes by Solux OS
+Comment[es]=Notas rápidas en Markdown, locales y privadas
+Exec=solux-notes
+Icon=solux-notes
+Terminal=false
+Categories=Office;Utility;GTK;
+Keywords=notes;markdown;notas;
+StartupNotify=true

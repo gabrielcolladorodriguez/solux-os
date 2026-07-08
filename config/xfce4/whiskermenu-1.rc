@@ -2,7 +2,7 @@
 # © 2026 Pollocrudo Company
 # Menú moderno tipo "inicio": búsqueda arriba, categorías a un lado, favoritos.
 
-favorites=firefox-esr.desktop,solux-store.desktop,solux-security-center.desktop,solux-tweaks.desktop,xfce4-terminal.desktop,thunar.desktop,libreoffice-startcenter.desktop,org.xfce.mousepad.desktop
+favorites=solux-browser.desktop,firefox-esr.desktop,solux-store.desktop,solux-security-center.desktop,solux-tweaks.desktop,solux-notes.desktop,xfce4-terminal.desktop,thunar.desktop,libreoffice-startcenter.desktop
 recent=
 
 # --- Botón del panel ---

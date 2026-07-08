@@ -1,0 +1,21 @@
+[Configuration]
+# Solux OS — Tema de la terminal (xfce4-terminal) con la paleta Solux
+# © 2026 Pollocrudo Company
+FontName=JetBrains Mono 11
+MiscAlwaysShowTabs=FALSE
+MiscBell=FALSE
+MiscBordersDefault=TRUE
+MiscCursorBlinks=TRUE
+MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
+MiscDefaultGeometry=100x28
+MiscMenubarDefault=FALSE
+MiscToolbarDefault=FALSE
+ScrollingLines=10000
+ColorForeground=#F1F5F9
+ColorBackground=#0D0D1A
+ColorCursor=#F97316
+ColorBold=#FFFFFF
+ColorPalette=#15152A;#EF4444;#22C55E;#FBBF24;#3B82F6;#A855F7;#22D3EE;#94A3B8;#2A2A4A;#F87171;#4ADE80;#FCD34D;#60A5FA;#C084FC;#67E8F9;#F1F5F9
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+BackgroundDarkness=0.94
+TitleMode=TERMINAL_TITLE_HIDE

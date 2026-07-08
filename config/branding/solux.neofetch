@@ -1,0 +1,42 @@
+# Solux OS — Configuración de neofetch con marca propia
+# © 2026 Pollocrudo Company
+# Se instala en /etc/solux/neofetch.conf y se invoca desde la shell.
+
+print_info() {
+    prin "$(color 1)   Solux OS 1.0 \"Phoenix\""
+    prin "$(color 2)   Pollocrudo Company © 2026"
+    info break
+    info "OS" distro
+    info "Host" model
+    info "Kernel" kernel
+    info "Uptime" uptime
+    info "Shell" shell
+    info "DE" de
+    info "WM" wm
+    info "Terminal" term
+    info "CPU" cpu
+    info "Memory" memory
+    info break
+    prin "$(color 3)   Firewall$(color 7): $(systemctl is-active ufw 2>/dev/null || echo n/a)"
+    prin "$(color 3)   AppArmor$(color 7): $(aa-status --enabled 2>/dev/null && echo enforce || echo off)"
+    info break
+    info cols
+}
+
+# Logo ASCII propio
+image_backend="ascii"
+ascii_distro="auto"
+ascii_colors=(3 4 7 6)   # naranja, azul, blanco, cyan (índices ANSI)
+ascii_bold="on"
+
+# Colores de marca
+colors=(1 3 4 7 6 7)
+bold="on"
+separator=" ·"
+
+# Barras de memoria
+memory_percent="on"
+memory_unit="gib"
+
+# Sin cabecera de usuario@host duplicada (la ponemos arriba)
+title_fqdn="off"

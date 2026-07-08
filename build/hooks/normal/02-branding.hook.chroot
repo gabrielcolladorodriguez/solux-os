@@ -79,6 +79,8 @@ make_launcher solux-store            /usr/share/solux/store/solux_store.py
 make_launcher solux-security-center  /usr/share/solux/security-center/solux_security_center.py
 make_launcher solux-welcome          /usr/share/solux/welcome/solux_welcome.py
 make_launcher solux-tweaks           /usr/share/solux/tweaks/solux_tweaks.py
+make_launcher solux-browser          /usr/share/solux/browser/solux_browser.py
+make_launcher solux-notes            /usr/share/solux/notes/solux_notes.py
 
 # --- Registrar Flathub para Flatpak ---
 if command -v flatpak >/dev/null 2>&1; then
