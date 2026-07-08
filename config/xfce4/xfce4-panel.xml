@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Solux OS — Panel superior + menú Whisker (el dock inferior lo pone Plank)
+  Solux OS — Panel superior (limpio, estándar y bien formado)
+  Un único panel arriba: menú Solux (Whisker) con el sol a la izquierda,
+  ventanas, bandeja, sonido, batería, reloj y acciones. El dock lo pone Plank.
   © 2026 Pollocrudo Company
 -->
 <channel name="xfce4-panel" version="1.0">
   <property name="configver" type="int" value="2"/>
   <property name="panels" type="array">
     <value type="int" value="1"/>
-
-    <!-- Panel 1: barra superior translúcida -->
     <property name="panel-1" type="empty">
       <property name="position" type="string" value="p=6;x=0;y=0"/>
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
-      <property name="size" type="uint" value="34"/>
+      <property name="icon-size" type="uint" value="16"/>
+      <property name="size" type="uint" value="30"/>
+      <property name="background-style" type="uint" value="0"/>
       <property name="enter-opacity" type="uint" value="100"/>
-      <property name="leave-opacity" type="uint" value="92"/>
-      <property name="background-style" type="uint" value="1"/>
-      <property name="background-rgba" type="array">
-        <value type="double" value="0.051"/>
-        <value type="double" value="0.051"/>
-        <value type="double" value="0.102"/>
-        <value type="double" value="0.94"/>
-      </property>
+      <property name="leave-opacity" type="uint" value="100"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
         <value type="int" value="2"/>
@@ -32,67 +27,47 @@
         <value type="int" value="6"/>
         <value type="int" value="7"/>
         <value type="int" value="8"/>
-        <value type="int" value="9"/>
       </property>
     </property>
   </property>
-
   <property name="plugins" type="empty">
-    <!-- Menú Whisker con marca Solux -->
+    <!-- Menú Solux (Whisker) con el sol a la izquierda del todo -->
     <property name="plugin-1" type="string" value="whiskermenu">
+      <property name="button-icon" type="string" value="solux-mark"/>
       <property name="button-title" type="string" value="Solux"/>
-      <property name="button-icon" type="string" value="solux-logo"/>
       <property name="show-button-title" type="bool" value="true"/>
       <property name="show-button-icon" type="bool" value="true"/>
     </property>
-
-    <property name="plugin-2" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-
-    <!-- Lista de ventanas -->
-    <property name="plugin-3" type="string" value="tasklist">
-      <property name="grouping" type="uint" value="1"/>
+    <!-- Ventanas abiertas -->
+    <property name="plugin-2" type="string" value="tasklist">
       <property name="show-labels" type="bool" value="true"/>
-      <property name="flat-buttons" type="bool" value="true"/>
+      <property name="grouping" type="uint" value="1"/>
     </property>
-
-    <!-- Espaciador expansible -->
-    <property name="plugin-4" type="string" value="separator">
+    <!-- Empuja el resto a la derecha -->
+    <property name="plugin-3" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
       <property name="style" type="uint" value="0"/>
     </property>
-
     <!-- Bandeja del sistema -->
-    <property name="plugin-5" type="string" value="systray">
+    <property name="plugin-4" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
     </property>
-
-    <!-- Red -->
-    <property name="plugin-6" type="string" value="pulseaudio">
+    <!-- Sonido -->
+    <property name="plugin-5" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
     </property>
-
+    <!-- Batería / energía -->
+    <property name="plugin-6" type="string" value="power-manager-plugin"/>
     <!-- Reloj -->
     <property name="plugin-7" type="string" value="clock">
-      <property name="mode" type="uint" value="2"/>
       <property name="digital-time-format" type="string" value="%a %d %b  %H:%M"/>
     </property>
-
-    <!-- Botón del centro de seguridad (acceso directo con marca) -->
-    <property name="plugin-8" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="solux-security-center.desktop"/>
-      </property>
-    </property>
-
-    <!-- Acciones de sesión -->
-    <property name="plugin-9" type="string" value="actions">
+    <!-- Acciones (bloquear, cerrar sesión, apagar) -->
+    <property name="plugin-8" type="string" value="actions">
       <property name="appearance" type="uint" value="0"/>
       <property name="items" type="array">
         <value type="string" value="+lock-screen"/>
         <value type="string" value="+logout"/>
-        <value type="string" value="+restart"/>
         <value type="string" value="+shutdown"/>
       </property>
     </property>

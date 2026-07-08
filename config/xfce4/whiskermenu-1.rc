@@ -5,9 +5,9 @@
 favorites=solux-browser.desktop,solux-store.desktop,solux-security-center.desktop,solux-tweaks.desktop,solux-notes.desktop,xfce4-settings-manager.desktop,xfce4-terminal.desktop,thunar.desktop,libreoffice-writer.desktop
 recent=
 
-# --- Botón del panel ---
+# --- Botón del panel (sol cuadrado a la izquierda) ---
 button-title=Solux
-button-icon=solux-logo
+button-icon=solux-mark
 button-single-row=false
 show-button-title=true
 show-button-icon=true
