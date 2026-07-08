@@ -91,6 +91,26 @@ make_launcher solux-tweaks           /usr/share/solux/tweaks/solux_tweaks.py
 make_launcher solux-browser          /usr/share/solux/browser/solux_browser.py
 make_launcher solux-notes            /usr/share/solux/notes/solux_notes.py
 
+# --- Instalador Calamares: rebrandear a Solux OS (no Debian) ---
+# Logo del instalador (cuadrado)
+if [ -f /usr/share/pixmaps/solux/solux-mark.png ]; then
+    install -d /etc/calamares/branding/solux
+    cp -f /usr/share/pixmaps/solux/solux-mark.png /etc/calamares/branding/solux/logo.png 2>/dev/null || true
+    cp -f /usr/share/pixmaps/solux/solux-mark.png /etc/calamares/branding/solux/welcome.png 2>/dev/null || true
+fi
+# Usar la marca Solux en la config que ya funciona
+if [ -f /etc/calamares/settings.conf ]; then
+    sed -i 's|branding:.*|branding: solux|' /etc/calamares/settings.conf || true
+fi
+# Renombrar los lanzadores "Install Debian" a "Instalar Solux OS"
+for f in /usr/share/applications/*calamares*.desktop /usr/share/applications/*install-debian*.desktop; do
+    [ -f "$f" ] || continue
+    sed -i '/^Name\[/d; /^Comment\[/d; /^GenericName\[/d' "$f"
+    sed -i 's|^Name=.*|Name=Instalar Solux OS|; s|^GenericName=.*|GenericName=Instalador del sistema|; s|^Comment=.*|Comment=Instala Solux OS en tu disco|; s|^Icon=.*|Icon=solux-mark|' "$f"
+done
+# Quitar el icono "Install Debian" del escritorio (dejamos el nuestro de Solux)
+rm -f /etc/skel/Desktop/*[Dd]ebian*.desktop 2>/dev/null || true
+
 # --- Registrar Flathub para Flatpak ---
 if command -v flatpak >/dev/null 2>&1; then
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true

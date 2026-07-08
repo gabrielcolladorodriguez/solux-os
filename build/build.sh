@@ -58,6 +58,17 @@ lb config \
     --iso-volume "Solux OS 1.0 Phoenix" \
     --memtest none
 
+# --- Rebranding del menú de arranque (BIOS/UEFI dice "Solux OS", no Debian) ---
+log "Rebrandeando el menú de arranque a Solux OS..."
+if [ -d /usr/share/live/build/bootloaders ]; then
+    rm -rf config/bootloaders
+    cp -r /usr/share/live/build/bootloaders config/bootloaders
+    # Reemplazar todas las menciones de Debian por Solux OS en los textos del menú
+    grep -rIl "Debian" config/bootloaders 2>/dev/null | while read -r f; do
+        sed -i 's|Debian GNU/Linux|Solux OS|g; s|Debian Live|Solux OS|g; s|Debian|Solux OS|g' "$f"
+    done
+fi
+
 # --- Copiar listas de paquetes ---
 log "Copiando listas de paquetes..."
 mkdir -p config/package-lists
@@ -176,10 +187,11 @@ cp "$PROJECT_DIR/config/grub/theme.txt" "$INC/boot/grub/themes/solux/"
 cp "$PROJECT_DIR/config/grub/grub-default" "$INC/etc/default/grub"
 cp "$PROJECT_DIR/config/plymouth/"* "$INC/usr/share/plymouth/themes/solux/"
 
-# Instalador Calamares
-mkdir -p "$INC/etc/calamares/modules" "$INC/etc/calamares/branding/solux"
-cp "$PROJECT_DIR/installer/calamares/settings.conf" "$INC/etc/calamares/"
-cp "$PROJECT_DIR/installer/calamares/modules/"*.conf "$INC/etc/calamares/modules/"
+# Instalador Calamares — SOLO branding Solux.
+# No sobrescribimos settings.conf ni modules: dejamos la config de
+# calamares-settings-debian (que SÍ funciona) y solo la rebrandeamos a Solux
+# en el hook 02-branding. Enviar nuestra settings.conf incompleta rompía el instalador.
+mkdir -p "$INC/etc/calamares/branding/solux"
 cp -r "$PROJECT_DIR/installer/calamares/branding/solux/"* "$INC/etc/calamares/branding/solux/"
 
 # --- Construir la ISO ---

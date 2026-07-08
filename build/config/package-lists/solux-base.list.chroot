@@ -13,6 +13,16 @@ systemd-timesyncd
 network-manager
 network-manager-gnome
 ca-certificates
+
+# --- Sonido (PipeWire): sin esto el sistema no tiene audio ---
+pipewire
+pipewire-pulse
+pipewire-alsa
+pipewire-audio
+wireplumber
+pavucontrol
+xfce4-pulseaudio-plugin
+alsa-utils
 locales
 console-setup
 
