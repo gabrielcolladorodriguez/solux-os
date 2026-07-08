@@ -40,15 +40,15 @@ if [ -f /etc/pam.d/lightdm-autologin ]; then
     :  # el paquete ya trae la regla de autologin
 fi
 
-# Lanzador de instalación en el escritorio del usuario en vivo
+# Lanzador de instalación en el escritorio del usuario en vivo (pkexec, con agente polkit)
 install -d /etc/skel/Desktop
 cat > /etc/skel/Desktop/install-solux.desktop <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Instalar Solux OS
 Comment=Instala Solux OS en tu disco
-Exec=sudo calamares
-Icon=solux-logo
+Exec=pkexec calamares
+Icon=solux-mark
 Terminal=false
 EOF
 chmod +x /etc/skel/Desktop/install-solux.desktop

@@ -75,16 +75,16 @@ python3
 python3-gi
 gir1.2-gtk-3.0
 policykit-1
+lxpolkit
 flatpak
 gnome-software
 gnome-software-plugin-flatpak
 
 # --- Integración con máquinas virtuales (resolución, portapapeles, ratón) ---
+# (VirtualBox no está en Debian 12; sus módulos vienen en el kernel + video genérico)
 spice-vdagent
 open-vm-tools-desktop
 xserver-xorg-video-vmware
-virtualbox-guest-x11
-virtualbox-guest-utils
 
 # --- Instalador ---
 calamares
