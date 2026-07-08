@@ -51,6 +51,7 @@ lb config \
     --parent-mirror-binary-security "http://security.debian.org/debian-security/" \
     --binary-images iso-hybrid \
     --bootloaders "syslinux,grub-efi" \
+    --compression gzip \
     --debian-installer none \
     --bootappend-live "boot=live components username=solux hostname=solux locales=es_ES.UTF-8 keyboard-layouts=es" \
     --iso-application "Solux OS" \
