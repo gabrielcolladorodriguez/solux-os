@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solux OS — Atajos de teclado (tiling de ventanas + apps) -->
+<channel name="xfce4-keyboard-shortcuts" version="1.0">
+  <property name="commands" type="empty">
+    <property name="custom" type="empty">
+      <property name="&lt;Super&gt;e" type="string" value="thunar"/>
+      <property name="&lt;Super&gt;t" type="string" value="xfce4-terminal"/>
+      <property name="&lt;Super&gt;w" type="string" value="firefox-esr"/>
+      <property name="&lt;Super&gt;f" type="string" value="thunar"/>
+      <property name="&lt;Super&gt;s" type="string" value="solux-security-center"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="xfce4-terminal"/>
+      <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
+      <property name="override" type="bool" value="true"/>
+    </property>
+  </property>
+  <property name="xfwm4" type="empty">
+    <property name="default" type="empty">
+      <!-- Tiling con Super + flechas -->
+      <property name="&lt;Super&gt;Left" type="string" value="tile_left_key"/>
+      <property name="&lt;Super&gt;Right" type="string" value="tile_right_key"/>
+      <property name="&lt;Super&gt;Up" type="string" value="maximize_window_key"/>
+      <property name="&lt;Super&gt;Down" type="string" value="hide_window_key"/>
+      <property name="&lt;Super&gt;KP_7" type="string" value="tile_up_left_key"/>
+      <property name="&lt;Super&gt;KP_9" type="string" value="tile_up_right_key"/>
+      <property name="&lt;Super&gt;KP_1" type="string" value="tile_down_left_key"/>
+      <property name="&lt;Super&gt;KP_3" type="string" value="tile_down_right_key"/>
+      <property name="&lt;Alt&gt;F4" type="string" value="close_window_key"/>
+      <property name="&lt;Alt&gt;Tab" type="string" value="cycle_windows_key"/>
+      <property name="&lt;Super&gt;d" type="string" value="show_desktop_key"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Left" type="string" value="left_workspace_key"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="string" value="right_workspace_key"/>
+    </property>
+  </property>
+</channel>

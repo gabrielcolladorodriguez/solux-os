@@ -8,8 +8,9 @@
 firefox-esr
 # (Chromium y Tor Browser se ofrecen desde la Store)
 
-# --- Ofimática y documentos ---
-libreoffice
+# --- Ofimática y documentos (ligero: Writer + Calc; el resto en la Store) ---
+libreoffice-writer
+libreoffice-calc
 libreoffice-gtk3
 libreoffice-l10n-es
 hunspell-es
@@ -18,17 +19,10 @@ evince
 # --- Correo y comunicación ---
 thunderbird
 thunderbird-l10n-es-es
-hexchat
 
-# --- Multimedia ---
+# --- Multimedia (VLC + códecs; editores pesados como GIMP van en la Store) ---
 vlc
 mpv
-rhythmbox
-gimp
-inkscape
-audacity
-handbrake
-gnome-sound-recorder
 ffmpeg
 gstreamer1.0-plugins-good
 gstreamer1.0-plugins-bad

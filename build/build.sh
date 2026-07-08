@@ -105,19 +105,17 @@ if [ -f "$PROJECT_DIR/assets/logos/solux-logo.png" ]; then
     cp "$PROJECT_DIR/assets/logos/solux-logo.png" "$INC/usr/share/pixmaps/solux/solux-logo-full.png"
 fi
 
-# Apps Solux
-mkdir -p "$INC/usr/share/solux/store" "$INC/usr/share/solux/security-center" \
+# Apps Solux propias (Python/GTK): Security Center, Tweaks, Welcome, Notes.
+# Browser = Firefox rebrandeado; Store = GNOME Software rebrandeada (apps maduras).
+mkdir -p "$INC/usr/share/solux/security-center" \
          "$INC/usr/share/solux/welcome" "$INC/usr/share/solux/tweaks" \
-         "$INC/usr/share/solux/browser" "$INC/usr/share/solux/notes"
-cp "$PROJECT_DIR/apps/solux-store/solux_store.py"                    "$INC/usr/share/solux/store/"
-cp "$PROJECT_DIR/apps/solux-store/catalog.json"                     "$INC/usr/share/solux/store/"
+         "$INC/usr/share/solux/notes"
 cp "$PROJECT_DIR/apps/solux-security-center/solux_security_center.py" "$INC/usr/share/solux/security-center/"
 cp "$PROJECT_DIR/apps/solux-welcome/solux_welcome.py"               "$INC/usr/share/solux/welcome/"
 cp "$PROJECT_DIR/apps/solux-tweaks/solux_tweaks.py"                 "$INC/usr/share/solux/tweaks/"
-cp "$PROJECT_DIR/apps/solux-browser/solux_browser.py"              "$INC/usr/share/solux/browser/"
 cp "$PROJECT_DIR/apps/solux-notes/solux_notes.py"                  "$INC/usr/share/solux/notes/"
 
-# Lanzadores .desktop
+# Lanzadores .desktop (solux-browser -> Firefox, solux-store -> GNOME Software)
 mkdir -p "$INC/usr/share/applications"
 cp "$PROJECT_DIR/apps/solux-store/solux-store.desktop"                       "$INC/usr/share/applications/"
 cp "$PROJECT_DIR/apps/solux-security-center/solux-security-center.desktop"   "$INC/usr/share/applications/"

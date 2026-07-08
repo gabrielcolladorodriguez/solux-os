@@ -84,12 +84,23 @@ exec python3 "$2" "\$@"
 EOF
     chmod 0755 "/usr/bin/$1"
 }
-make_launcher solux-store            /usr/share/solux/store/solux_store.py
 make_launcher solux-security-center  /usr/share/solux/security-center/solux_security_center.py
 make_launcher solux-welcome          /usr/share/solux/welcome/solux_welcome.py
 make_launcher solux-tweaks           /usr/share/solux/tweaks/solux_tweaks.py
-make_launcher solux-browser          /usr/share/solux/browser/solux_browser.py
 make_launcher solux-notes            /usr/share/solux/notes/solux_notes.py
+# (solux-browser = Firefox y solux-store = GNOME Software; no necesitan launcher python)
+
+# --- Ocultar Firefox y GNOME Software crudos: se ven como Solux Browser / Solux Store ---
+hide_app() {
+    # $1 = ruta al .desktop; le añade NoDisplay=true si no lo tiene
+    [ -f "$1" ] || return 0
+    grep -q "^NoDisplay=" "$1" && sed -i 's/^NoDisplay=.*/NoDisplay=true/' "$1" \
+        || printf 'NoDisplay=true\n' >> "$1"
+}
+hide_app /usr/share/applications/firefox-esr.desktop
+hide_app /usr/share/applications/org.gnome.Software.desktop
+hide_app /usr/share/applications/software-properties-gtk.desktop
+# Renombrar el reproductor y otros a marca suave (opcional, mínimo)
 
 # --- Instalador Calamares: rebrandear a Solux OS (no Debian) ---
 # Logo del instalador (cuadrado)

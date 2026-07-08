@@ -2,20 +2,21 @@
 Type=Application
 Version=1.0
 Name=Solux Browser
-Name[es]=Navegador Solux
-GenericName=Web Browser
-GenericName[es]=Navegador web
-Comment=Fast, private web browser by Solux OS
-Comment[es]=Navegador web rápido y privado de Solux OS
-Exec=solux-browser %u
+GenericName=Navegador web
+Comment=Navegador web de Solux OS (basado en Firefox, endurecido)
+Exec=firefox-esr %u
 Icon=solux-browser
 Terminal=false
-Categories=Network;WebBrowser;GTK;
-MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;
-Keywords=browser;web;internet;navegador;
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
 StartupNotify=true
-Actions=private;
+StartupWMClass=firefox-esr
+Actions=new-window;new-private-window;
 
-[Desktop Action private]
+[Desktop Action new-window]
+Name=Nueva ventana
+Exec=firefox-esr --new-window
+
+[Desktop Action new-private-window]
 Name=Nueva ventana privada
-Exec=solux-browser --private
+Exec=firefox-esr --private-window
