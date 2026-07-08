@@ -59,6 +59,15 @@ elif [ -d "$SRC/logos" ] && command -v rsvg-convert >/dev/null 2>&1; then
 fi
 cp -f /usr/share/pixmaps/solux/solux-logo.png /usr/share/icons/hicolor/256x256/apps/solux-logo.png 2>/dev/null || true
 
+# Logo CUADRADO (solo el sol) para huecos cuadrados: login, arranque, GRUB.
+# Evita que el logo ancho "Solux OS" se vea aplastado.
+if command -v rsvg-convert >/dev/null 2>&1 && [ -f "$SRC/logos/solux-logo-mark.svg" ]; then
+    rsvg-convert -w 256 -h 256 "$SRC/logos/solux-logo-mark.svg" -o /usr/share/pixmaps/solux/solux-mark.png || true
+    # Usar el cuadrado en Plymouth y GRUB (si existen sus carpetas)
+    [ -d /usr/share/plymouth/themes/solux ] && cp -f /usr/share/pixmaps/solux/solux-mark.png /usr/share/plymouth/themes/solux/logo.png || true
+    [ -d /boot/grub/themes/solux ] && cp -f /usr/share/pixmaps/solux/solux-mark.png /boot/grub/themes/solux/logo.png || true
+fi
+
 # Elegir el fondo por defecto: preferir el wallpaper fotográfico real 01 si está.
 DEFAULT_BG=/usr/share/backgrounds/solux/01-phoenix-dawn.png
 if [ -f /usr/share/backgrounds/solux/solux-wallpaper-01.jpg ]; then

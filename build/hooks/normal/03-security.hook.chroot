@@ -204,15 +204,13 @@ systemctl enable fail2ban.service || true
 # =====================================================================================
 # FASE 9 — PAM: contraseñas fuertes + bloqueo por intentos
 # =====================================================================================
+# Política razonable para escritorio: mínimo 8 caracteres, sin exigencias absurdas.
+# (La contraseña es opcional: la sesión en vivo entra con autologin.)
 cat > /etc/security/pwquality.conf <<'EOF'
-minlen = 16
-minclass = 3
-maxrepeat = 2
-dcredit = -1
-ucredit = -1
-ocredit = -1
-lcredit = -1
-gecoscheck = 1
+minlen = 8
+minclass = 1
+maxrepeat = 4
+gecoscheck = 0
 enforcing = 1
 EOF
 # faillock (bloqueo tras 5 fallos durante 15 min)

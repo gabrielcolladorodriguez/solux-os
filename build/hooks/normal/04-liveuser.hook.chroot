@@ -1,26 +1,44 @@
 #!/bin/sh
-# Solux OS — Configura el usuario en vivo y fuerza cambio de contraseña
+# Solux OS — Configura el usuario en vivo con autologin (sin contraseña al arrancar)
 # © 2026 Pollocrudo Company
 set -e
 
-echo "[Solux][04-liveuser] Configurando usuario en vivo 'solux'..."
+echo "[Solux][04-liveuser] Configurando usuario en vivo 'solux' (autologin)..."
 
 # Shell por defecto: zsh si está instalado, si no bash
 DEFAULT_SHELL=/bin/bash
 [ -x /usr/bin/zsh ] && DEFAULT_SHELL=/usr/bin/zsh
 
+# Grupo de autologin
+groupadd -f autologin || true
+
 # Crear grupo/usuario si no existe (en vivo, live-config también lo gestiona)
 if ! id solux >/dev/null 2>&1; then
-    useradd -m -s "$DEFAULT_SHELL" -G sudo,audio,video,plugdev,netdev solux || true
+    useradd -m -s "$DEFAULT_SHELL" -G sudo,audio,video,plugdev,netdev,autologin solux || true
     echo "solux:solux" | chpasswd || true
+else
+    usermod -aG autologin solux 2>/dev/null || true
 fi
 # Zsh también para futuros usuarios creados por el instalador
 if [ -x /usr/bin/zsh ]; then
     sed -i 's|^SHELL=.*|SHELL=/usr/bin/zsh|' /etc/default/useradd 2>/dev/null || true
 fi
 
-# Forzar cambio de contraseña en el primer login
-chage -d 0 solux 2>/dev/null || true
+# NO se fuerza cambio de contraseña: la sesión en vivo entra sola (autologin).
+# El usuario puede ponerse contraseña luego si quiere (passwd), sin mínimos absurdos.
+
+# Autologin de LightDM (sin pedir contraseña al iniciar el sistema en vivo)
+install -d /etc/lightdm/lightdm.conf.d
+cat > /etc/lightdm/lightdm.conf.d/60-autologin.conf <<'EOF'
+[Seat:*]
+autologin-user=solux
+autologin-user-timeout=0
+autologin-session=xfce
+EOF
+# Permitir autologin sin contraseña en PAM
+if [ -f /etc/pam.d/lightdm-autologin ]; then
+    :  # el paquete ya trae la regla de autologin
+fi
 
 # Lanzador de instalación en el escritorio del usuario en vivo
 install -d /etc/skel/Desktop
